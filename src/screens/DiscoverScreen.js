@@ -1,37 +1,33 @@
 import React, {useState, useEffect} from 'react'
 import { Text, TouchableOpacity, View, FlatList } from 'react-native'
-import axios from 'axios'
+import getMovies from '../utils/getMovies'
+import Movie from '../component/Movie'
 
 const API_KEY = process.env.TMDB_API_KEY;
+const BASE_URL = 'https://api.themoviedb.org/3/';
+
+const urls = {
+    popularMovies: BASE_URL+'movie/popular?api_key='+API_KEY,
+    popularSeries: BASE_URL+'tv/popular?api_key='+API_KEY,
+    genreFamily: BASE_URL+'discover/movie?api_key='+API_KEY+'&with_genres=10751',
+    genreDocumentary: BASE_URL+'discover/movie?api_key='+API_KEY+'&with_genres=99',
+}
 
 const DiscoverScreen = ({navigation}) => {
     const [popularMovies, setPopularMovies] = useState([]);
     useEffect(async () => {
-        const list = await getMovieList();
-        setPopularMovies(list)
+        setPopularMovies(await getMovies(urls.popularMovies));
     }, [])
-
-    const getMovieList = () => {
-        return axios.get('https://api.themoviedb.org/3/movie/popular?api_key='+API_KEY)
-        .then(res => res.data.results)
-        .catch(function (error) {
-            console.log(error);
-        })
-    }
 
     return (
         <View>
-            <TouchableOpacity onPress={() => {
-                navigation.navigate('Detail')
-            }}>
-                <Text>Detail</Text>
-                <FlatList 
-                data={popularMovies}
-                extraData={popularMovies}
-                renderItem={({item}) => <Text>{item.title}</Text>}
-                keyExtractor={item => item.id.toString()}
-            />
-            </TouchableOpacity>
+            <Text style={{fontSize: 20}}>Popular Movies</Text>
+            <FlatList 
+            data={popularMovies}
+            extraData={popularMovies}
+            renderItem={({item}) => <Movie item={item} navigation={navigation} />}
+            keyExtractor={item => item.id.toString()}
+        />
         </View>
     )
 }
