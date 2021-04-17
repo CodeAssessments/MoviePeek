@@ -3,13 +3,13 @@ import {
   SafeAreaView,
   StatusBar,
 } from 'react-native';
-import VideoPlayer from './src/component/VideoPlayer';
+import ScreenNavigator from './src/navigation/ScreenNavigator';
 
 const App = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <StatusBar />
-      <VideoPlayer />
+      <ScreenNavigator />
     </SafeAreaView>
   );
 };

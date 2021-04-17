@@ -5,7 +5,8 @@ import Video from 'react-native-video';
 const VideoPlayer = () => {
     return (
         <Video source={require("../assets/big_buck_bunny.mp4")} 
-            style={styles.backgroundVideo} />
+        controls={true}
+        style={styles.backgroundVideo} />
     )
 }
 
