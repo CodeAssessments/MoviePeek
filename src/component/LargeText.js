@@ -12,7 +12,6 @@ const LargeText = props => {
 const styles = StyleSheet.create({
     largeText: {
       fontSize: 20,
-      margin: 10, 
     }
 });
 

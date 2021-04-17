@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, Text, View } from 'react-native'
+import { FlatList, View } from 'react-native'
 import Movie from './Movie'
 import { useNavigation } from '@react-navigation/native';
 import LargeText from './LargeText';
@@ -8,7 +8,7 @@ const CarouselMovies = ({title, data}) => {
     const navigation = useNavigation();
     return (
         <View>
-            <LargeText>{title}</LargeText>
+            <LargeText style={{marginHorizontal: 10}}>{title}</LargeText>
             <FlatList 
             data={data}
             extraData={data}

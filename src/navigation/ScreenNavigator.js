@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import DiscoverScreen from "../screens/DiscoverScreen";
 import DetailScreen from "../screens/DetailScreen";
 import VideoScreen from "../screens/VideoScreen";
+import SearchScreen from "../screens/SearchScreen";
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ const ScreenNavigator = () => {
             <Stack.Screen name="Discover" component={DiscoverScreen} />
             <Stack.Screen name="Detail" component={DetailScreen} />
             <Stack.Screen name="Video" component={VideoScreen} />
+            <Stack.Screen name="Search" component={SearchScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       );
