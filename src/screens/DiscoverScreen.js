@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { View } from 'react-native'
+import { ScrollView } from 'react-native'
 import getMovies from '../utils/getMovies'
 import CarouselMovies from '../component/CarouselMovies'
 
@@ -27,12 +27,12 @@ const DiscoverScreen = () => {
     }, [])
 
     return (
-        <View>
+        <ScrollView style={{flex: 1, backgroundColor: '#E1E2E6'}}>
             <CarouselMovies title={"Popular Movies"} data={popularMovies} />
             <CarouselMovies title={"Popular TV Series"} data={popularSeries} />
             <CarouselMovies title={"Family Movies"} data={genreFamily} />
             <CarouselMovies title={"Documentary"} data={genreDocumentary} />
-        </View>
+        </ScrollView>
     )
 }
 
