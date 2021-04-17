@@ -9,7 +9,8 @@ import SearchScreen from "../screens/SearchScreen";
 
 const Stack = createStackNavigator();
 
-const ScreenNavigator = () => {
+const ScreenNavigator = (props) => {
+  console.log(props)
     return (
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Discover">

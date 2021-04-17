@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { ScrollView, Text, TouchableOpacity } from 'react-native'
+import { Button, ScrollView, Text } from 'react-native'
 import getMovies from '../utils/getMovies'
 import CarouselMovies from '../component/CarouselMovies'
 
@@ -20,6 +20,16 @@ const DiscoverScreen = ({navigation}) => {
     const [genreDocumentary, setGenreDocumentary] = useState([]);
 
     useEffect(async () => {
+        navigation.setOptions({
+            headerRight: () => (
+                <Button
+                    onPress={() => navigation.navigate('Search')}
+                    title='&#128269;'
+                    color='#fff'
+                />
+            ),
+            headerStyle: {},
+        });
         setPopularMovies(await getMovies(urls.popularMovies));
         setPopularSeries(await getMovies(urls.popularSeries));
         setGenreFamily(await getMovies(urls.genreFamily));
@@ -28,11 +38,6 @@ const DiscoverScreen = ({navigation}) => {
 
     return (
         <ScrollView style={{flex: 1, backgroundColor: '#E1E2E6'}}>
-            <TouchableOpacity onPress={() => {
-                    navigation.navigate('Search')
-                }}>
-                <Text style={{fontSize: 20}}>&#128269;</Text>
-            </TouchableOpacity>  
             <CarouselMovies title={"Popular Movies"} data={popularMovies} />
             <CarouselMovies title={"Popular TV Series"} data={popularSeries} />
             <CarouselMovies title={"Family Movies"} data={genreFamily} />
