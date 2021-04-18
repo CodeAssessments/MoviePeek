@@ -10,17 +10,17 @@ import SearchScreen from "../screens/SearchScreen";
 const Stack = createStackNavigator();
 
 const ScreenNavigator = (props) => {
-  console.log(props)
-    return (
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Discover">
-            <Stack.Screen name="Discover" component={DiscoverScreen} />
-            <Stack.Screen name="Detail" component={DetailScreen} />
-            <Stack.Screen name="Video" component={VideoScreen} />
-            <Stack.Screen name="Search" component={SearchScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      );
+  //App sets the discover screen as entry point
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Discover">
+        <Stack.Screen name="Discover" component={DiscoverScreen} />
+        <Stack.Screen name="Detail" component={DetailScreen} />
+        <Stack.Screen name="Video" component={VideoScreen} />
+        <Stack.Screen name="Search" component={SearchScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 export default ScreenNavigator;

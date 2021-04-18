@@ -14,12 +14,15 @@ const urls = {
 }
 
 const DiscoverScreen = ({navigation}) => {
+    //First screen the view sees
+    //4 hooks for results to update FlatList when received data
     const [popularMovies, setPopularMovies] = useState([]);
     const [popularSeries, setPopularSeries] = useState([]);
     const [genreFamily, setGenreFamily] = useState([]);
     const [genreDocumentary, setGenreDocumentary] = useState([]);
 
     useEffect(async () => {
+        //sets button with a link to search screen in header/navbar
         navigation.setOptions({
             headerRight: () => (
                 <Button
@@ -30,6 +33,7 @@ const DiscoverScreen = ({navigation}) => {
             ),
             headerStyle: {},
         });
+        //calls async getMovies util and updates hooks with results
         setPopularMovies(await getMovies(urls.popularMovies));
         setPopularSeries(await getMovies(urls.popularSeries));
         setGenreFamily(await getMovies(urls.genreFamily));

@@ -6,7 +6,9 @@ import PlayButton from '../component/PlayButton';
 const BASE_ULR = 'https://image.tmdb.org/t/p/w500'
 
 const DetailScreen = ({route, navigation}) => {
+    //get the movie object sent from discover screen when movie is clicked
     const movie = route.params.movie;
+    //for tv results, the key is called name instead of title
     const title = movie.title || movie.name;
     return (
         <View style={{flex: 1}} >
